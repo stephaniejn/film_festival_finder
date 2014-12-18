@@ -8,7 +8,17 @@
 	<script src="/script.js"></script>
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400,500,300' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="/style.css">
+    <!-- CHOSEN CSS -->
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/chosen/1.1.0/chosen.min.css">
+    <!-- CHOSEN JS -->
+    <script type="text/javascript" src="/chosen.jquery.min.js"></script>
+   
+
+</body>
+</html>
+
 </head>
 <body>
 
@@ -17,34 +27,37 @@
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container-fluid">
   <nav>
-    <h3 class="pull-left">The Filmmaker's Festival Finder <small>Favorite your Festival</small></h3>
+  <ul class="pagination pull-right logButtons">
+    <%if (currentUser) {%>
+    <li><a href="/logout">Logout</a></li>
+    <%} else {%>
+    <li><a href="/login">Login</a></li>
+    <li><a href="/signup">Signup</a></li>
+    <%}%>
+  </ul>
+</nav>
+  <nav>
+    <h1 class="pull-left">Film Festival Finder <small>for Filmmakers</small></h1>
 </nav>
     <!-- Brand and toggle get grouped for better mobile display -->
     <nav>
   <ul class="pagination pull-right">
-  <li><a href="/">Home</a></li>
+      <li id="goBack"><a href='javascript:window.location = document.referrer;'><span class="glyphicon glyphicon-backward" aria-hidden="true"></span></a></li>
+  <li><a href="/root">Home</a></li>
  	 <li><a href="/about">About</a></li>
     <%if (currentUser) {%>
-    <li><a href="/logout">Logout</a></li>
-    <li><a href="/favoriteList">Favorites</a></li>
+    <li><a href="/favoriteList"><%=currentUser.name%>'s Favorites</a></li>
     <%} else {%>
     <li class="disabled"><a href="/favoriteList">Favorites</a></li>
-    <li><a href="/login">Login</a></li>
-    <li><a href="/signup">Signup</a></li>
     <%}%>
   </ul>
 </nav>
 </div>
 </nav>
 </div>
+<br>
 
-<button onclick="goBack()">Go Back</button>
 
-<script>
-function goBack() {
-    window.history.back().reload()
-}
-</script>
 	
 <div class="container-fluid">
 		

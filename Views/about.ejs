@@ -1,19 +1,15 @@
 <% include header %>
-
 <br>
-Thanks for stopping by the Filmmaker's Festival Finder! Here you can search for festivals, save them in your favorites list and return at any time.
-
-*Disclaimer: The photos are from Instagram - we take no responsibility for their content!
+<div class = "container">
+<div class="row">
+  <div class=".col-md-offset-6 paragraph">Thanks for stopping by the Film Festival Finder! We're a one-stop shop for all your film festival needs. Find the festival that fits your needs, save it and add comments. Enjoy!
+  </div>
+</div>
+</div>
+</div>
 
 
 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-  </ol>
-
 <%for(var i =1; i<data.length; i++){%>
 	<%if(data[i] != undefined){%>
   <!-- Wrapper for slides -->
@@ -36,6 +32,7 @@ Thanks for stopping by the Filmmaker's Festival Finder! Here you can search for 
     
   </div>
 
+
   <!-- Controls -->
   <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -45,6 +42,8 @@ Thanks for stopping by the Filmmaker's Festival Finder! Here you can search for 
     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
+  <br>
+  <div class="paragraph">*Disclaimer: The photos are from Instagram - we take no responsibility for their content!</div>
 </div>
 <%}%>
 

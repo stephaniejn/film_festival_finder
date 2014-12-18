@@ -7,6 +7,8 @@ var session = require('express-session');
 var flash = require('connect-flash');
 var bcrypt = require('bcrypt');
 var $ = require('jQuery');
+var moment = require('moment');
+moment().format();
 var Instagram = require('instagram-node-lib');
 var festivalData = require('./data/festivalData.json')
 var countries = festivalData.festivals.map(function(item){
@@ -75,7 +77,13 @@ app.post('/signup',function(req,res){
 	db.user.findOrCreate({where: {email:req.body.email},
 		defaults: {email:req.body.email, password:req.body.password, name:req.body.name}})
 	.spread(function(createdUser, created){
-		res.redirect('/');
+		if(created){
+			res.redirect('/login');
+		}else{
+			req.flash('danger', 'User already exists - please log in');
+            res.redirect('/login');
+		}
+		
             // res.send(createdUser)
         }).catch(function(error){
         	if(error && Array.isArray(error.errors)){
@@ -108,7 +116,7 @@ app.post('/login',function(req,res){
             			email: userObj.email,
             			name: userObj.name
             		};
-            		res.redirect('/');
+            		res.redirect('/root');
             	}
             	else{
             		req.flash('danger', 'Invalid password - failed!');
@@ -124,19 +132,19 @@ app.post('/login',function(req,res){
 });
 
 // Landing Page
-app.get('/landing', function(req,res){
-	res.render('landing')
+app.get('/', function(req,res){
+	res.render('home')
 })
 
 // Home Page
-app.get('/', function(req,res){
+app.get('/root', function(req,res){
 	var user = req.getUser();
 			res.render('root', {uniqueCountries:uniqueCountries, monthNames:monthNames, user:user});
 })
 
 // About Page
 app.get('/about', function(req,res){
-	Instagram.users.recent({ user_id: 40269498, 
+	Instagram.users.recent({ user_id: 3724687, 
 		complete: function(data){
 	res.render("about",{data:data})
 }
@@ -265,7 +273,7 @@ app.post("/favoriteList:id/comments",function(req,res){
 app.get('/logout',function(req,res){
 	delete req.session.user;
 	req.flash('info', 'You have been logged out.');
-	res.redirect('/');
+	res.redirect('/root');
 });
 
 app.listen(process.env.PORT || 3000);

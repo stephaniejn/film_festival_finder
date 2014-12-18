@@ -1,37 +1,38 @@
 <% include header %>
 
-<% if(user) { %>
-Hello, <b><%= typeof user.name === 'string' ? user.name : 'Unknown' %></b>.
-<% } %>
 
-<br>
-<br>
-
-<h4 class="text-center">Find your Festival</h4>
+<div class="container">
+  <% if(user) { %>
+  Welcome <b><%= typeof user.name === 'string' ? user.name : 'Unknown' %></b>!
+  <% } %>
+  <h3 class="text-center">Find your Festival</h3>
   <div class="col-sm-3">
-<form method="get" action="/festivals">
-Fee <select class="form-control" name="fee">
-    <option value=""></option>
-    <option value="yes">Fee</option>
-    <option value="no">No Fee</option>
-</select>
-Country <select class="form-control" name="country">
-   <option value=""></option>
-   <%for (var i =0; i<uniqueCountries.length; i++){%>
-    <option value="<%=uniqueCountries[i]%>"><%=uniqueCountries[i]%></option>
-      <%}%>
-      </select>
-      <p>Start Date: <input type="text" name = "startDate" id="datepicker"></p>
+
+    <div class="form-group">
+
+  <!-- chosen -->
+  <form role="form" method="get" action="/festivals">
+   Fee <select class="form-control feeClass" name="fee">
+      <option value=""></option>
+      <option value="yes">Fee</option>
+      <option value="no">No Fee</option>
+    </select>
+    <div id="countryTitle"> Country </div> 
+    <select class="chzn-select form-control" id="country" name="country" multiple>
+     <option value=""></option>
+     <%for (var i =0; i<uniqueCountries.length; i++){%>
+     <option value="<%=uniqueCountries[i]%>"><%=uniqueCountries[i]%></option>
+     <%}%>
+   </select>
+   <p>Start Date: <input type="text" name = "startDate" id="datepicker"></p>
 <p>End Date: <input type="text" name = "endDate" id="datepicker2"></p>
-      <input type = "submit">
-  </form>
-  </div>
+   <input type="submit" class="btn btn-default" value="Submit">
+</form>
 
+<!-- change type to date to get html datepicker -->
 
-
-
-
-
+</div>
+</div>
 
 
 

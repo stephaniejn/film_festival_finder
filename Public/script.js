@@ -1,5 +1,9 @@
 $(function(){
 
+
+  $('.chzn-select').chosen();
+
+
 	$('.deleteFav').on('click', function(event) 
 		{
 			console.log("clicking!")
@@ -20,6 +24,7 @@ $(function(){
 	})
 	$( "#datepicker" ).datepicker();
 	$( "#datepicker2" ).datepicker();
+
 })
 
 
