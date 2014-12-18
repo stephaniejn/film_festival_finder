@@ -1,0 +1,52 @@
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script src="/script.js"></script>
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body>
+
+<div class="page-header">
+
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+  <nav>
+    <h3 class="pull-left">The Filmmaker's Festival Finder <small>Favorite your Festival</small></h3>
+</nav>
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <nav>
+  <ul class="pagination pull-right">
+  <li><a href="/">Home</a></li>
+ 	 <li><a href="/about">About</a></li>
+    <%if (currentUser) {%>
+    <li><a href="/logout">Logout</a></li>
+    <li><a href="/favoriteList">Favorites</a></li>
+    <%} else {%>
+    <li class="disabled"><a href="/favoriteList">Favorites</a></li>
+    <li><a href="/login">Login</a></li>
+    <li><a href="/signup">Signup</a></li>
+    <%}%>
+  </ul>
+</nav>
+</div>
+</nav>
+</div>
+
+<button onclick="goBack()">Go Back</button>
+
+<script>
+function goBack() {
+    window.history.back().reload()
+}
+</script>
+	
+<div class="container-fluid">
+		
+
+		<% include alerts %>

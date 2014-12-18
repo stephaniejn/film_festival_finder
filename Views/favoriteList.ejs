@@ -1,0 +1,19 @@
+<% include header %>
+
+<h1> Favorites List </h1>
+
+<%for(var i =0; i<festivals.length; i++){%>
+<ul>
+<div>
+	<a href='/id/<%= festivals[i].name %>'
+	<li><%= festivals[i].name %></li> </a>
+		<input type="submit" value="Delete Entry" a href="#" data-id="<%= festivals[i].id %>" class="button deleteFav">
+	<form action = '/favoriteList<%= festivals[i].id%>/comments' method = 'get'>
+			<input type="hidden" name="id" value="<%= festivals[i].id%>">
+           <input type = 'submit' value = 'Add Musing'>
+         </form>
+</div>
+</ul>
+<%}%>
+
+<% include footer %>

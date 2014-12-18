@@ -1,0 +1,18 @@
+<% include header %>
+
+<form id="commentbtn" action= '/favoriteList<%=commentID%>/comments' method="post">
+			<input type="text" name="text">
+			<input type="submit" value="Add Comment">
+		</form>
+<br>
+<br>
+<h1 id="comment_title"> Your Musings on:
+<div> <%=watchThing.name%> </div> </h1>
+<br>
+<%for(var i =0; i<returnMe.length; i++){%>
+	 <div>"<%=returnMe[i].text%>"</div>
+<%}%>
+
+
+
+<% include footer %>

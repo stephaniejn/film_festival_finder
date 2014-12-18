@@ -1,0 +1,16 @@
+<% include header %>
+<ul> <%for(var i =0; i<festivals.length; i++){%>
+	<li>
+<%var date= new Date(festivals[i].lastDeadline).toString().split(" ")%>
+	<%= festivals[i].name%>, Fee: <%=festivals[i].fee%>, Country: <%=festivals[i].country%>, 
+	Date: <%= date[1]+" "+date[2]+" "+date[3] %> 
+	<form action = '/id/<%= festivals[i].name %>' method = 'get'>
+           <input type = 'submit' value = 'Find Out More'>
+         </form>
+	</li> 
+<%}%>
+<br>
+<%if(festivals.length === 0){%>
+<h6> No results found. Please broaden your search terms. </h6>
+<%}%>
+<% include footer %>

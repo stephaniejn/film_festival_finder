@@ -1,0 +1,42 @@
+#carousel-example-generic{
+	margin-top: 50px;
+	position: absolute;
+	height: 100%;
+	width: auto;
+	margin-left: 15%;
+}
+.carousel-inner{
+	position: relative;
+}
+#imageTest{
+	height: 100%;
+	width: 100%;
+	background-size: 100%;
+	overflow: hidden;
+}
+
+div.transparentBox
+{
+position: absolute;
+top: calc(50% - 45px);
+left: calc(50% - 140px);
+  width: 280px;
+  height: 90px;
+  background-color: #C6AE81;
+  opacity:0.6;
+}
+div.transparentBox p
+{
+	position: relative;
+	margin-top: 22px;
+	text-align: center;
+	font-size: 20px;
+	font-family: courier;
+  font-weight: bold;
+  color: #DBC497;
+}
+
+.span8 a {
+	 color: #1F0D12;
+    text-decoration: none;
+}

@@ -1,0 +1,24 @@
+Month
+	<select name="month">
+		<option value=""></option>
+	<%for (var i =0; i<monthNames.length; i++){%>
+		
+		<option value="<%=(i+1)%>"><%=monthNames[i]%></option>
+		<%}%>
+	</select>
+	<input type = "submit">
+</form>
+
+<!-- Log in info from header -->
+		<%if (currentUser) {%>
+		<form action="/favoriteList">
+			<input type="submit" value="Go to Festival Favorites">
+		</form>
+		<a href="/logout" class="btn btn-primary">Logout</a>
+		<%} else {%>
+		<a href="/login" class="btn btn-primary">Login</a>
+		<a href="/signup" class="btn btn-primary">Signup</a>
+		<%}%>
+
+
+
