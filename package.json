@@ -16,6 +16,7 @@
     "express": "^4.10.5",
     "express-session": "^1.9.3",
     "jQuery": "^1.7.4",
+    "jsdom": "^1.5.0",
     "lodash": "^2.4.1",
     "moment": "^2.8.4",
     "pg": "^4.1.0",
