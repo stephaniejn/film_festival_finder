@@ -53,6 +53,7 @@ ul{
 	line-height: 200%;
 }
 .list-group-item{
+	padding-top: 8%;
 	padding: 5%;
 	height: 25%;
 	margin-top: 8%;
