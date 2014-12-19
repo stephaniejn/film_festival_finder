@@ -228,12 +228,14 @@ app.get('/festivals', function(req,res){
 // Each Festival Page
 app.get('/id/:festivalName', function(req,res){
 	var params = req.params.festivalName
+	var user = req.getUser();
 	var festivals = festivalData.festivals
 	for (var i=0; i <festivals.length; i++) {
 		if (params == festivals[i].name) {
 			var oneFestival = festivals[i]
 			// console.log("THE ONEFESTIVAL IS:" + oneFestival.name)
-			db.favorite.count({where: {name:oneFestival.name}}).then(function(foundItemCount){
+			db.favorite.count({where: {name:oneFestival.name, userId:user.id}}).then(function(foundItemCount){
+				// res.send(foundItemCount)
 				console.log("THE NAME IS: " +oneFestival.name)
 				var wasFound= foundItemCount > 0;
 				var realName = oneFestival.name.split(",")
