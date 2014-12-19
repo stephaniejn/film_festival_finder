@@ -6,7 +6,6 @@ var db = require('./models');
 var session = require('express-session');
 var flash = require('connect-flash');
 var bcrypt = require('bcrypt');
-var $ = require('jQuery');
 var moment = require('moment');
 moment().format();
 var Instagram = require('instagram-node-lib');
