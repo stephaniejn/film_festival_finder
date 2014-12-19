@@ -1,37 +1,98 @@
 body{
+	background-color: #E3E4DA;
 	font-family: raleway; 
 	font-size: 16px;
+}
+.navbar{
+	background-color: #B9B3AF;
+}
+.btn{
+	background-color: #595359;
+	border-color: #595359;
+	opacity: .8;
+	color: white;
+}
+.btn1{
+	background-color: #757073 !important;
+	border-color: #757073 !important;
+	color: white !important;
+}
+h2, h3, h4{
+	font-family: courier;
+}
+#addSpace{
+	margin-top: 3%;
+}
+#moreSpace{
+	margin-top: 10%;
+	text-align: center;
+	margin-right: 30%;
+}
+#favoriteHeader{
+	text-align: center;
 }
 ul{
 	list-style-type: none
 }
+.moreBtn{
+	background-color: #B9B3AF;
+	color: black;
+	border-color: #B9B3AF
+}
 .logo{
 	max-width: 20%;
 }
+.logo2{
+	max-width: 20%;
+}
+#title2{
+	font-size: 18px;
+	color: black;
+}
+#info{
+	line-height: 200%;
+}
 .list-group-item{
-	margin-top: 5%;
+	height: 25%;
+	margin-top: 8%;
+	background-color: #89928F;
+	border-radius: 10% !important;
+}
+.add{
+	margin-left: 50%;
+	float: right;
+	font-size: 16px;
+	margin-top: 2%;
+	background-color: #B9B3AF;
+	color: black;
+	border-color: #B9B3AF
 }
 .name{
 	font-family: courier;
 	font-size: 20px;
 }
-.more{
-	font-size: 16px;
-}
-.moreInfoBtn{
+.moreInfoBtn, .deleteFav{
 	float: right;
 	margin-top: 2%;
+	font-size: 16px;
+	background-color: #B9B3AF;
+	color: black;
+	border-color: #B9B3AF
 }
 
 .page-header{
 	font-family: courier;
 	font-size: 16px;
+	background-color: black !important;
 }
 .logButtons{
-	margin-left: 1%
+	margin-left: 1%;}
+
+.countryClass{
+	margin-bottom: 15px;
 }
 .feeClass{
-	margin-bottom: 15px !important;
+	margin-bottom: 15px 
 }
 
 .chosen-container-multi .chosen-choices, #datepicker, #datepicker2{
@@ -55,10 +116,6 @@ ul{
 	transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
 
-.slideTwo{
-	top:500px !important;
-}
-
 .glyphicon{
 	font-size: 22px;
 }
@@ -80,6 +137,18 @@ color: black;
 #p3{
 	line-height: 20px;
 }
+#list{
+	padding-top: 3%;
+}
+#carousel-example-generic2{
+	top: 22%;
+	right: 5%;
+	position: absolute;
+	width: 35%;
+	margin-bottom: 50px;
+
+}
+
 #carousel-example-generic{
 	top: 25%;
 	left: 35%;
@@ -88,6 +157,7 @@ color: black;
 	margin-bottom: 50px;
 
 }
+
 
 .carousel-control.left {
 

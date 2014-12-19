@@ -23,6 +23,9 @@ module.exports = {
       userId: {
         type: DataTypes.INTEGER
       },
+      logoUrl: {
+        type: DataTypes.STRING
+      },
       createdAt: {
         allowNull: false,
         type: DataTypes.DATE

@@ -1,41 +1,47 @@
 <% include header %>
 <div class ="container">
-<h2> Name: <%=oneFestival.name%> </h2>
 <div class="row" id="info">
-    <div class=".col-md-offset-6 paragraph">
-	<li> Country: <%=oneFestival.country%></li> 
-	<li> Category: <%=oneFestival.category%></li> 
-	<li> Fee <%=oneFestival.fee%></li> 
-	<li> Cost: <%=oneFestival.cost%></li> 
-	<li> Submissions Open: <%=oneFestival.submissionsOpen%></li> 
-	<li> First Deadline: <%=oneFestival.firstDeadline%></li> 
-	<li> Last Deadline: <%=oneFestival.lastDeadline%></li> 
-	<li> Winners Announcement: <%=oneFestival.winnersAnnounsment%></li> 
-	<li> Festival Start: <%=oneFestival.festivalStart%></li> 
-	<li> Festival End: <%=oneFestival.festivalEnd%></li>
-	<li> Logo Url: <%=oneFestival.logoUrl%></li> 
-	<li> Site Url: <%=oneFestival.siteUrl%></li>
+    <div class=".col-md-6 col-md-offset-3">
+    <h3> <%=oneFestival.name%> </h3>
+    </div>
+  <div id="list" classs = ".col-md-6">
+  <ul>
+	<li> <strong> Country: </strong> <%=oneFestival.country%></li> 
+	<li> <strong> Category: </strong> <%=oneFestival.category%></li> 
+	<li> <strong> Fee: </strong> <%=oneFestival.fee%> </li> 
+	<li> <strong> Cost: </strong> <%=oneFestival.cost%> </li> 
+	<li> <strong> Submissions Open: </strong> <%=oneFestival.submissionsOpen%> </li> 
+	<li> <strong> Final Deadline: </strong> <%=oneFestival.lastDeadline%> </li> 
+	<li> <strong> Festival Start: </strong> <%=oneFestival.festivalStart%> </li> 
+	<li> <strong> Festival End: </strong> <%=oneFestival.festivalEnd%> </li>
+	<li> <a href="<%=oneFestival.siteUrl%>"> Festival Site </a></li>
+ 
 
-
+<br>
 <%if (festivalFound) {%>
-	Already in!
+<button type="button" class="btn btn-default btn1" disabled> Festival already in Favorites!</button>
+
 <%} else if (currentUser) {%>
 <form action = '/favoriteList' method = 'post'>
 			<input type="hidden" name="name" value="<%=oneFestival.name%>">
+      <input type="hidden" name="logoUrl" value="<%=oneFestival.logoUrl %>">
 			<input type="hidden" name="country" value="<%=oneFestival.country%>">
 			<input type="hidden" name="fee" value="<%=oneFestival.fee%>">
-      <input type="hidden" name="category" value="<%=oneFestival.category%>">
 			<input type="hidden" name="lastDeadline" value="<%=oneFestival.lastDeadline%>">
-           <input type = 'submit' value = 'Favorite this Festival'>
+           <button class="btn btn-default btn1" type="submit"> Favorite this Festival</button>
          </form>
 <%} else {%>
-Please log in to save this festival
+<form action = '/login' method = 'get'>
+              <button type="submit" class="btn btn-default btn1 more">Please log in to save festival</button></form>
 <%}%>
+ </ul>
+</div>
 </div>
 </div>
 </div>
 
-<div id="carousel-example-generic" class="carousel slide slideTwo" data-ride="carousel">
+
+<div id="carousel-example-generic2" class="carousel slide slideTwo" data-ride="carousel" style="float: right">
 <%for(var i =1; i<data.length; i++){%>
   <%if(data[i] != undefined){%>
   <!-- Wrapper for slides -->
@@ -60,11 +66,11 @@ Please log in to save this festival
 
 
   <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+  <a class="left carousel-control" href="#carousel-example-generic2" role="button" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
   </a>
-  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+  <a class="right carousel-control" href="#carousel-example-generic2" role="button" data-slide="next">
     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>

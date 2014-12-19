@@ -3,7 +3,7 @@
 
 <div class="container">
   <% if(user) { %>
-  Welcome <b><%= typeof user.name === 'string' ? user.name : 'Unknown' %></b>!
+  Hello <b><%= typeof user.name === 'string' ? user.name : 'Unknown' %></b>!
   <% } %>
   <h3 class="text-center">Find your Festival</h3>
   <div class="col-sm-3">
@@ -18,20 +18,20 @@
       <option value="no">No Fee</option>
     </select>
 
-    <div id="countryTitle"> Country </div> 
-    <select multiple class="chzn-select form-control" id="country" name="country">
-     <option value=""></option>
-     <%for (var i =0; i<uniqueCountries.length; i++){%>
-     <option value="<%=uniqueCountries[i]%>"><%=uniqueCountries[i]%></option>
-     <%}%>
-   </select>
-
-    Category <select class="form-control categoryClass" name="category">
-     <option value=""></option>
+    <div id="categoryTitle"> Category </div> 
+    <select multiple class="chzn-select form-control" id="category" name="category">
+      <option value=""></option>
      <%for (var i =0; i<category.length; i++){%>
      <option value="<%=category[i]%>"><%=category[i]%></option>
      <%}%>
-   </select>   
+   </select>
+
+   Country <select class="form-control countryClass" name="country">
+     <option value=""></option>
+   <%for (var i =0; i<uniqueCountries.length; i++){%>
+     <option value="<%=uniqueCountries[i]%>"><%=uniqueCountries[i]%></option>
+     <%}%>
+   </select>  
 
    <p>Search Date Start: <input type="text" name = "startDate" id="datepicker"></p>
 <p>Search Date End: <input type="text" name = "endDate" id="datepicker2"></p>

@@ -1,6 +1,6 @@
 $(function(){
 
-  $('#country').chosen()
+  $('#category').chosen()
 
 	$('.deleteFav').on('click', function(event) 
 		{

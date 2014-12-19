@@ -219,9 +219,9 @@ app.get('/festivals', function(req,res){
 	if(req.query.category){
 		festivals=festivals.filter(function(item){
 			return (item.category == req.query.category);
-			res.send(hello)
 		})	
 	}
+	// res.send(req.query.category)
 	res.render("festivals", {festivals:festivals});
 })
 
@@ -310,7 +310,6 @@ app.post("/favoriteList:id/comments",function(req,res){
   db.favorite.find({where: {id: req.params.id}}).then(function(newComment){
   newComment.createComment({text: req.body.text, watch_id:req.params.id})
   .then(function(theComment){
-    req.flash('danger','Excellent Musing')
     res.redirect("comments")
   })
 })
