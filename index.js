@@ -17,14 +17,14 @@ var uniqueCountries = countries.filter(function(elem, pos) {
 var date = festivalData.festivals.map(function(item){
 	return(item.lastDeadline)
 });
-var arrays = festivalData.festivals.map(function(item){
-	return(item.category)
-});
-var merged = [];
-merged = merged.concat.apply(merged, arrays);
-// var category = merged.filter(function(elem, pos){
-// 	return merged.indexOf(elem) == pos;
-});
+// var arrays = festivalData.festivals.map(function(item){
+// 	return(item.category)
+// });
+// var merged = [];
+// merged = merged.concat.apply(merged, arrays);
+// // var category = merged.filter(function(elem, pos){
+// // 	return merged.indexOf(elem) == pos;
+// // });
 var category=
 [ "Feature", 
 "Short", 
