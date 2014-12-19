@@ -188,7 +188,7 @@ div.transparentBox
 	height: 200px;
 	background-color: #C6AE81;
 	opacity:0.6;
-	border-radius: 4px;
+	border-radius: 8%;
 }
 div.transparentBox p
 {
