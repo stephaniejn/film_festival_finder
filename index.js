@@ -6,8 +6,6 @@ var db = require('./models');
 var session = require('express-session');
 var flash = require('connect-flash');
 var bcrypt = require('bcrypt');
-var moment = require('moment');
-moment().format();
 var Instagram = require('instagram-node-lib');
 var festivalData = require('./data/festivalData.json')
 var countries = festivalData.festivals.map(function(item){
@@ -19,6 +17,52 @@ var uniqueCountries = countries.filter(function(elem, pos) {
 var date = festivalData.festivals.map(function(item){
 	return(item.lastDeadline)
 });
+var arrays = festivalData.festivals.map(function(item){
+	return(item.category)
+});
+var merged = [];
+merged = merged.concat.apply(merged, arrays);
+// var category = merged.filter(function(elem, pos){
+// 	return merged.indexOf(elem) == pos;
+});
+var category=
+[ "Feature", 
+"Short", 
+"Student", 
+"Documentary", 
+"Horror", 
+"Narrative", 
+"Music Video", 
+"Animation", 
+"Experimental", 
+"Youth", 
+"Comedy", 
+"Live Action", 
+"Family Films", 
+"LGBT", 
+"Sci-Fi", 
+"Screenplay", 
+"TV", 
+"Action", 
+"Fantasy", 
+"Independent", 
+"Religional", 
+"Drama", 
+"International", 
+"Adventure", 
+"Web Series", 
+"Commercial", 
+"Art House", 
+"Trailer", 
+"Teen Filmmaker", 
+"Cell Shot", 
+"Biopic", 
+"Family", 
+" Youth", 
+"Music", 
+" Narrative" 
+ ]
+
 // var monthArray = [];
 // for(var i=0; i < date.length; i++) {
 // 	var dateArray = date[i].split("-");
@@ -115,7 +159,7 @@ app.post('/login',function(req,res){
             			email: userObj.email,
             			name: userObj.name
             		};
-            		res.redirect('/root');
+            		res.redirect('/search');
             	}
             	else{
             		req.flash('danger', 'Invalid password - failed!');
@@ -130,15 +174,11 @@ app.post('/login',function(req,res){
     })
 });
 
-// Landing Page
-app.get('/', function(req,res){
-	res.render('home')
-})
-
 // Home Page
-app.get('/root', function(req,res){
+app.get('/search', function(req,res){
 	var user = req.getUser();
-			res.render('root', {uniqueCountries:uniqueCountries, monthNames:monthNames, user:user});
+			res.render('search', {uniqueCountries:uniqueCountries, category:category,
+			 monthNames:monthNames, user:user});
 })
 
 // About Page
@@ -150,6 +190,10 @@ app.get('/about', function(req,res){
 })
 });
 
+// Landing Page
+app.get('/', function(req,res){
+	res.render('home')
+})
 
 // Festivals & Search Page
 app.get('/festivals', function(req,res){
@@ -172,7 +216,12 @@ app.get('/festivals', function(req,res){
 			return (item.country == req.query.country);
 		})	
 	}
-	// res.send(festivals)
+	if(req.query.category){
+		festivals=festivals.filter(function(item){
+			return (item.category == req.query.category);
+			res.send(hello)
+		})	
+	}
 	res.render("festivals", {festivals:festivals});
 })
 
@@ -272,7 +321,7 @@ app.post("/favoriteList:id/comments",function(req,res){
 app.get('/logout',function(req,res){
 	delete req.session.user;
 	req.flash('info', 'You have been logged out.');
-	res.redirect('/root');
+	res.redirect('/search');
 });
 
 app.listen(process.env.PORT || 3000)

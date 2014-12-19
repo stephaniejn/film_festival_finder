@@ -1,6 +1,8 @@
 <% include header %>
-	<li> Name: <%=oneFestival.name%></li>  
-	<li> Type: <%=oneFestival.type%></li> 
+<div class ="container">
+<h2> Name: <%=oneFestival.name%> </h2>
+<div class="row" id="info">
+    <div class=".col-md-offset-6 paragraph">
 	<li> Country: <%=oneFestival.country%></li> 
 	<li> Category: <%=oneFestival.category%></li> 
 	<li> Fee <%=oneFestival.fee%></li> 
@@ -14,6 +16,7 @@
 	<li> Logo Url: <%=oneFestival.logoUrl%></li> 
 	<li> Site Url: <%=oneFestival.siteUrl%></li>
 
+
 <%if (festivalFound) {%>
 	Already in!
 <%} else if (currentUser) {%>
@@ -21,34 +24,31 @@
 			<input type="hidden" name="name" value="<%=oneFestival.name%>">
 			<input type="hidden" name="country" value="<%=oneFestival.country%>">
 			<input type="hidden" name="fee" value="<%=oneFestival.fee%>">
+      <input type="hidden" name="category" value="<%=oneFestival.category%>">
 			<input type="hidden" name="lastDeadline" value="<%=oneFestival.lastDeadline%>">
-           <input type = 'submit' value = 'Favorite Film Festival'>
+           <input type = 'submit' value = 'Favorite this Festival'>
          </form>
 <%} else {%>
 Please log in to save this festival
 <%}%>
+</div>
+</div>
+</div>
 
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-  </ol>
-
+<div id="carousel-example-generic" class="carousel slide slideTwo" data-ride="carousel">
 <%for(var i =1; i<data.length; i++){%>
-	<%if(data[i] != undefined){%>
+  <%if(data[i] != undefined){%>
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-       <img src= "<%= data[0].images.standard_resolution.url%>">
+       <img id="imageTest" src= "<%= data[0].images.standard_resolution.url%>">
       <div class="carousel-caption">
     
       </div>
     </div>
     <%for(var i =1; i<data.length; i++){%>
     <div class="item">
-      <img src= "<%= data[i].images.standard_resolution.url%>">
+      <img id="imageTest" src= "<%= data[i].images.standard_resolution.url%>">
       <div class="carousel-caption">
         
       </div>
@@ -57,6 +57,7 @@ Please log in to save this festival
 <%}%>
     
   </div>
+
 
   <!-- Controls -->
   <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
@@ -67,8 +68,11 @@ Please log in to save this festival
     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
+  <br>
+  <div class="paragraph"></div>
 </div>
 <%}%>
+</div>
 
-<br>
+
 <% include footer %>

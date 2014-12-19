@@ -17,15 +17,24 @@
       <option value="yes">Fee</option>
       <option value="no">No Fee</option>
     </select>
+
     <div id="countryTitle"> Country </div> 
-    <select class="chzn-select form-control" id="country" name="country" multiple>
+    <select multiple class="chzn-select form-control" id="country" name="country">
      <option value=""></option>
      <%for (var i =0; i<uniqueCountries.length; i++){%>
      <option value="<%=uniqueCountries[i]%>"><%=uniqueCountries[i]%></option>
      <%}%>
    </select>
-   <p>Start Date: <input type="text" name = "startDate" id="datepicker"></p>
-<p>End Date: <input type="text" name = "endDate" id="datepicker2"></p>
+
+    Category <select class="form-control categoryClass" name="category">
+     <option value=""></option>
+     <%for (var i =0; i<category.length; i++){%>
+     <option value="<%=category[i]%>"><%=category[i]%></option>
+     <%}%>
+   </select>   
+
+   <p>Search Date Start: <input type="text" name = "startDate" id="datepicker"></p>
+<p>Search Date End: <input type="text" name = "endDate" id="datepicker2"></p>
    <input type="submit" class="btn btn-default" value="Submit">
 </form>
 

@@ -1,10 +1,31 @@
+body{
+	font-family: raleway; 
+	font-size: 16px;
+}
+ul{
+	list-style-type: none
+}
+.logo{
+	max-width: 20%;
+}
+.list-group-item{
+	margin-top: 5%;
+}
+.name{
+	font-family: courier;
+	font-size: 20px;
+}
+.more{
+	font-size: 16px;
+}
+.moreInfoBtn{
+	float: right;
+	margin-top: 2%;
+}
 
 .page-header{
 	font-family: courier;
 	font-size: 16px;
-}
-.container{
-	font-family: raleway;
 }
 .logButtons{
 	margin-left: 1%
@@ -34,9 +55,17 @@
 	transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
 
-#goBack{
+.slideTwo{
+	top:500px !important;
+}
+
+.glyphicon{
 	font-size: 22px;
 }
+.glyph a{
+color: black;
+}
+
 .paragraph{
 	text-align: justify;
 	font-family: raleway;
@@ -53,19 +82,29 @@
 }
 #carousel-example-generic{
 	top: 25%;
-	left: 23%;
+	left: 35%;
 	position: absolute;
-	height: 60%;
-	width: 50%;
+	width: 35%;
 	margin-bottom: 50px;
 
 }
+
+.carousel-control.left {
+
+	background-image: none;
+}
+
+.carousel-control.right {
+
+	background-image: none;
+}
+
+
 .carousel-inner{
 	position: relative;
 }
 #imageTest{
-	height: 100%;
-	width: 100%;
+	margin: 0 auto;
 	background-size: 100%;
 	overflow: hidden;
 }

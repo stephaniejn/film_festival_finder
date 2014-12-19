@@ -1,8 +1,6 @@
 $(function(){
 
-
-  $('.chzn-select').chosen();
-
+  $('#country').chosen()
 
 	$('.deleteFav').on('click', function(event) 
 		{

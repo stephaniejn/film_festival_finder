@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/chosen/1.1.0/chosen.min.css">
     <!-- CHOSEN JS -->
     <script type="text/javascript" src="/chosen.jquery.min.js"></script>
+    
    
 
 </body>
@@ -42,8 +43,8 @@
     <!-- Brand and toggle get grouped for better mobile display -->
     <nav>
   <ul class="pagination pull-right">
-      <li id="goBack"><a href='javascript:window.location = document.referrer;'><span class="glyphicon glyphicon-backward" aria-hidden="true"></span></a></li>
-  <li><a href="/root">Home</a></li>
+      <li><a href='javascript:window.location = document.referrer;'><span class="glyphicon glyphicon-backward" aria-hidden="true"></span></a></li>
+  <li><a href="/search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
  	 <li><a href="/about">About</a></li>
     <%if (currentUser) {%>
     <li><a href="/favoriteList"><%=currentUser.name%>'s Favorites</a></li>
