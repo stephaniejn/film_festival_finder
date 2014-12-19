@@ -17,51 +17,51 @@ var uniqueCountries = countries.filter(function(elem, pos) {
 var date = festivalData.festivals.map(function(item){
 	return(item.lastDeadline)
 });
-// var arrays = festivalData.festivals.map(function(item){
-// 	return(item.category)
-// });
-// var merged = [];
-// merged = merged.concat.apply(merged, arrays);
-// // var category = merged.filter(function(elem, pos){
-// // 	return merged.indexOf(elem) == pos;
-// // });
-var category=
-[ "Feature", 
-"Short", 
-"Student", 
-"Documentary", 
-"Horror", 
-"Narrative", 
-"Music Video", 
-"Animation", 
-"Experimental", 
-"Youth", 
-"Comedy", 
-"Live Action", 
-"Family Films", 
-"LGBT", 
-"Sci-Fi", 
-"Screenplay", 
-"TV", 
-"Action", 
-"Fantasy", 
-"Independent", 
-"Religional", 
-"Drama", 
-"International", 
-"Adventure", 
-"Web Series", 
-"Commercial", 
-"Art House", 
-"Trailer", 
-"Teen Filmmaker", 
-"Cell Shot", 
-"Biopic", 
-"Family", 
-" Youth", 
-"Music", 
-" Narrative" 
- ]
+var arrays = festivalData.festivals.map(function(item){
+	return(item.category)
+});
+var merged = [];
+merged = merged.concat.apply(merged, arrays);
+var category = merged.filter(function(elem, pos){
+	return merged.indexOf(elem) == pos;
+});
+// var category=
+// [ "Feature", 
+// "Short", 
+// "Student", 
+// "Documentary", 
+// "Horror", 
+// "Narrative", 
+// "Music Video", 
+// "Animation", 
+// "Experimental", 
+// "Youth", 
+// "Comedy", 
+// "Live Action", 
+// "Family Films", 
+// "LGBT", 
+// "Sci-Fi", 
+// "Screenplay", 
+// "TV", 
+// "Action", 
+// "Fantasy", 
+// "Independent", 
+// "Religional", 
+// "Drama", 
+// "International", 
+// "Adventure", 
+// "Web Series", 
+// "Commercial", 
+// "Art House", 
+// "Trailer", 
+// "Teen Filmmaker", 
+// "Cell Shot", 
+// "Biopic", 
+// "Family", 
+// " Youth", 
+// "Music", 
+// " Narrative" 
+//  ]
 
 // var monthArray = [];
 // for(var i=0; i < date.length; i++) {
@@ -197,6 +197,7 @@ app.get('/', function(req,res){
 
 // Festivals & Search Page
 app.get('/festivals', function(req,res){
+
 	var festivals = festivalData.festivals
 	var startDate = req.query.startDate ? new Date(req.query.startDate) : new Date('1/1/1900')
 	var endDate = req.query.endDate ? new Date(req.query.endDate) : new Date('1/1/2111')
@@ -217,9 +218,24 @@ app.get('/festivals', function(req,res){
 		})	
 	}
 	if(req.query.category){
-		festivals=festivals.filter(function(item){
-			return (item.category == req.query.category);
-		})	
+		if(!Array.isArray(req.query.category)) req.query.category = [req.query.category];
+		var catLists = [];
+		req.query.category.forEach(function(category){
+			catLists.push(festivals.filter(function(item){
+				return (item.category.indexOf(category) > -1);
+			}));
+		});
+
+		festivals=[];
+
+		catLists.forEach(function(thisList){
+			festivals=festivals.concat(thisList);
+		});
+
+		//re remove duplicates
+		festivals.filter(function(elem, pos){
+			return festivals.indexOf(elem) == pos;
+		});
 	}
 	// res.send(req.query.category)
 	res.render("festivals", {festivals:festivals});
