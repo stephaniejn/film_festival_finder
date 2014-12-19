@@ -20,11 +20,13 @@
 
     <div id="categoryTitle"> Category </div> 
     <select multiple class="chzn-select form-control" id="category" name="category">
+    <optgroup>
       <option value=""></option>
      <%for (var i =0; i<category.length; i++){%>
      <option value="<%=category[i]%>"><%=category[i]%></option>
      <%}%>
    </select>
+   </optgroup>
 
    Country <select class="form-control countryClass" name="country">
      <option value=""></option>
