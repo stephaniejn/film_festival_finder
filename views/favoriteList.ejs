@@ -9,7 +9,7 @@
 
 	<a href='/id/<%= festivals[i].name %>'>
 	<div><li id="title2" class="list-group-item"><%= festivals[i].name %>
-		<button type="submit" class="deleteFav btn btn-default" a href="#" data-id="<%= festivals[i].id %>">Delete this Festival"</button>
+		<button type="submit" class="deleteFav btn btn-default" a href="#" data-id="<%= festivals[i].id %>">Delete this Festival</button>
 		<form action = '/favoriteList<%= festivals[i].id%>/comments' method = 'get'>
 			<input type="hidden" name="id" value="<%= festivals[i].id%>">
            	<button type="submit" class="btn btn-default add">Add Notes</button> </form>
