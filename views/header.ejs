@@ -9,59 +9,61 @@
 	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
   <link href='//fonts.googleapis.com/css?family=Raleway:400,500,300' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" type="text/css" href="/style.css">
-    <!-- CHOSEN CSS -->
-    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/chosen/1.1.0/chosen.min.css">
-    <!-- CHOSEN JS -->
-    <script type="text/javascript" src="/chosen.jquery.min.js"></script>
-
-    
-   
-
-</body>
-</html>
-
+  <link rel="stylesheet" type="text/css" href="/style.css">
+  <!-- CHOSEN CSS -->
+  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/chosen/1.1.0/chosen.min.css">
+  <!-- CHOSEN JS -->
+  <script type="text/javascript" src="/chosen.jquery.min.js"></script>
+  </html>
 </head>
 <body>
 
-<div class="page-header">
 
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container-fluid">
-  <nav>
-  <ul class="pagination pull-right logButtons">
-    <%if (currentUser) {%>
-    <li><a href="/logout">Logout</a></li>
-    <%} else {%>
-    <li><a href="/login">Login</a></li>
-    <li><a href="/signup">Signup</a></li>
-    <%}%>
-  </ul>
-</nav>
-  <nav>
-    <h1 class="pull-left">Film Festival Finder <small>for Filmmakers</small></h1>
-</nav>
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <nav>
-  <ul class="pagination pull-right">
-      <li><a href='javascript:window.location = document.referrer;'><span class="glyphicon glyphicon-backward" aria-hidden="true"></span></a></li>
-  <li><a href="/search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
- 	 <li><a href="/about">About</a></li>
-    <%if (currentUser) {%>
-    <li><a href="/favoriteList"><%=currentUser.name%>'s Favorites</a></li>
-    <%} else {%>
-    <li class="disabled"><a href="/favoriteList">Favorites</a></li>
-    <%}%>
-  </ul>
-</nav>
-</div>
-</nav>
-</div>
-<br>
+  <div class="page-header">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <h3 style="color:black" class="navbar-text navbar-left">Film Festival Finder <small>for Filmmakers</small></h3>
+        </div>
 
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <form class="navbar-form navbar-right" role="search">
+            <%if (currentUser) {%>
+            <a class="btn btn-default" href="/logout" role="button">Logout</a>
+            <%} else {%>
 
-	
-<div class="container-fluid">
-		
+            <a class="btn btn-default" href="/login" role="button">Login</a>
+            <a class="btn btn-default" href="/signup" role="button">Signup</a>
+            <%}%>
+          </form>
+          <ul id="listColor" class="nav navbar-nav navbar-right icons">
+           <li><a href='javascript:window.location = document.referrer;'><span class="glyphicon glyphicon-backward" aria-hidden="true"></span></a></li>
+           <li><a href="/search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a></li>
+           <li><a href="/about">About</a></li>
+           <%if (currentUser) {%>
+           <li><a href="/favoriteList"><%=currentUser.name%>'s Favorites</a></li>
+           <%} else {%>
+           <li class="disabled"><a href="/favoriteList">Favorites</a></li>
+           <%}%>
+         </ul>
+         
+         
+       </div><!-- /.navbar-collapse -->
+     </div><!-- /.container-fluid -->
+   </nav>
+ </div>
+ <br>
 
-		<% include alerts %>
+ 
+ <div class="container-fluid">
+  
+
+  <% include alerts %>

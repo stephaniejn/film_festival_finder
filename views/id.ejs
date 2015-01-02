@@ -1,83 +1,76 @@
 <% include header %>
 <div class ="container">
-<div class="row" id="info">
-    <div class=".col-md-6 col-md-offset-3">
-    <h3> <%=oneFestival.name%> </h3>
+  <div class="row" id="info">
+    <div class="col-md-6 col-md-offset-3">
+      <h3> <%=oneFestival.name%> </h3>
     </div>
-  <div id="list" classs = ".col-md-6">
-  <ul>
-	<li> <strong> Country: </strong> <%=oneFestival.country%></li> 
-	<li> <strong> Category: </strong> <%=oneFestival.category%></li> 
-	<li> <strong> Fee: </strong> <%=oneFestival.fee%> </li> 
-	<li> <strong> Cost: </strong> <%=oneFestival.cost%> </li> 
-	<li> <strong> Submissions Open: </strong> <%=oneFestival.submissionsOpen%> </li> 
-	<li> <strong> Final Deadline: </strong> <%=oneFestival.lastDeadline%> </li> 
-	<li> <strong> Festival Start: </strong> <%=oneFestival.festivalStart%> </li> 
-	<li> <strong> Festival End: </strong> <%=oneFestival.festivalEnd%> </li>
-	<li> <a href="<%=oneFestival.siteUrl%>"> Festival Site </a></li>
- 
-
-<br>
-<%if (festivalFound) {%>
-<button type="button" class="btn btn-default btn1" disabled> Festival already in Favorites!</button>
-
-<%} else if (currentUser) {%>
-<form action = '/favoriteList' method = 'post'>
-			<input type="hidden" name="name" value="<%=oneFestival.name%>">
-      <input type="hidden" name="logoUrl" value="<%=oneFestival.logoUrl %>">
-			<input type="hidden" name="country" value="<%=oneFestival.country%>">
-			<input type="hidden" name="fee" value="<%=oneFestival.fee%>">
-			<input type="hidden" name="lastDeadline" value="<%=oneFestival.lastDeadline%>">
-           <button class="btn btn-default btn1" type="submit"> Favorite this Festival</button>
-         </form>
-<%} else {%>
-<form action = '/login' method = 'get'>
-              <button type="submit" class="btn btn-default btn1 more">Please log in to save festival</button></form>
-<%}%>
- </ul>
-</div>
-</div>
-</div>
-</div>
-
-
-<div id="carousel-example-generic2" class="carousel slide slideTwo" data-ride="carousel" style="float: right">
-<%for(var i =1; i<data.length; i++){%>
-  <%if(data[i] != undefined){%>
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
-    <div class="item active">
-       <img id="imageTest" src= "<%= data[0].images.standard_resolution.url%>">
-      <div class="carousel-caption">
-    
+    <div id="carousel-example-generic2" class="carousel slide pull-right" data-ride="carousel">
+      <%for(var i =1; i<data.length; i++){%>
+      <%if(data[i] != undefined){%>
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner" role="listbox">
+        <div class="item active">
+         <img class= "img-responsive center-block" id="imageTest" src= "<%= data[0].images.standard_resolution.url%>">
+         <div class="carousel-caption">
+         </div>
+       </div>
+       <%for(var i =1; i<data.length; i++){%>
+       <div class="item">
+        <img class= "img-responsive center-block" id="imageTest" src= "<%= data[i].images.standard_resolution.url%>">
+        <div class="carousel-caption">
+        </div>
       </div>
+      <%}%>
+      <%}%>
     </div>
-    <%for(var i =1; i<data.length; i++){%>
-    <div class="item">
-      <img id="imageTest" src= "<%= data[i].images.standard_resolution.url%>">
-      <div class="carousel-caption">
-        
-      </div>
-    </div>
-    <%}%>
-<%}%>
-    
+    <!-- Controls -->
+    <a class="left carousel-control" href="#carousel-example-generic2" role="button" data-slide="prev">
+      <span class="glyphCarousel glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#carousel-example-generic2" role="button" data-slide="next">
+      <span class="glyphCarousel glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+    <br>
   </div>
+  <%}%>
 
 
-  <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-example-generic2" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#carousel-example-generic2" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-  <br>
-  <div class="paragraph"></div>
+  <div id="list" classs = ".col-md-6">
+    <ul>
+     <li> <strong> Country: </strong> <%=oneFestival.country%></li> 
+     <li> <strong> Category: </strong> <%=oneFestival.category%></li> 
+     <li> <strong> Fee: </strong> <%=oneFestival.fee%> </li> 
+     <li> <strong> Cost: </strong> <%=oneFestival.cost%> </li> 
+     <li> <strong> Submissions Open: </strong> <%=oneFestival.submissionsOpen%> </li> 
+     <li> <strong> Final Deadline: </strong> <%=oneFestival.lastDeadline%> </li> 
+     <li> <strong> Festival Start: </strong> <%=oneFestival.festivalStart%> </li> 
+     <li> <strong> Festival End: </strong> <%=oneFestival.festivalEnd%> </li>
+     <li> <a href="<%=oneFestival.siteUrl%>"> Festival Site </a></li>
+     
+
+     <br>
+     <%if (festivalFound) {%>
+     <button type="button" class="btn btn-default btn1" disabled> Festival already in Favorites!</button>
+
+     <%} else if (currentUser) {%>
+     <form action = '/favoriteList' method = 'post'>
+       <input type="hidden" name="name" value="<%=oneFestival.name%>">
+       <input type="hidden" name="logoUrl" value="<%=oneFestival.logoUrl %>">
+       <input type="hidden" name="country" value="<%=oneFestival.country%>">
+       <input type="hidden" name="fee" value="<%=oneFestival.fee%>">
+       <input type="hidden" name="lastDeadline" value="<%=oneFestival.lastDeadline%>">
+       <button class="btn btn-default btn1" type="submit"> Favorite this Festival</button>
+     </form>
+     <%} else {%>
+     <form action = '/login' method = 'get'>
+      <button type="submit" class="btn btn-default btn1 more">Please log in to save festival</button></form>
+      <%}%>
+    </ul>
+  </div>
 </div>
-<%}%>
+</div>
 </div>
 
 

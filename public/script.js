@@ -1,10 +1,10 @@
 $(function(){
 
-  $('#category').chosen()
+	$('#category').chosen()
 
 	$('.deleteFav').on('click', function(event) 
-		{
-			console.log("clicking!")
+	{
+		console.log("clicking!")
 		event.preventDefault();
 		// alert($(this).data('id'))
 

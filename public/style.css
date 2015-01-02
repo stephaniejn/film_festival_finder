@@ -6,19 +6,29 @@ body{
 .navbar{
 	background-color: #B9B3AF;
 }
+#listColor{
+	color: #337AB7
+}
 .btn{
-	background-color: #595359;
-	border-color: #595359;
+	background-color: #337AB7;
+	border-color: #337AB7;
 	opacity: .8;
 	color: white;
+	font-size: 16px;
 }
 .btn1{
 	background-color: #757073 !important;
 	border-color: #757073 !important;
 	color: white !important;
 }
+h3 small{
+	font-size: 75%
+}
 h2, h3, h4{
 	font-family: courier;
+}
+#aboutParagraph{
+	margin-top: 10px;
 }
 #addSpace{
 	margin-top: 3%;
@@ -53,9 +63,8 @@ ul{
 	line-height: 200%;
 }
 .list-group-item{
-	padding: 8%;
-	height: 30%;
-	margin-top: 8%;
+	padding: 6%;
+	margin: 6%;
 	background-color: #89928F;
 	border-radius: 10% !important;
 }
@@ -72,9 +81,14 @@ ul{
 	font-family: courier;
 	font-size: 20px;
 }
+.list-group-item:last-child {
+	word-wrap: break-word;
+}
+.deleteFav{
+	margin-top: 4%;
+}
 .moreInfoBtn, .deleteFav{
 	float: right;
-	margin-top: 2%;
 	font-size: 16px;
 	background-color: #B9B3AF;
 	color: black;
@@ -86,8 +100,6 @@ ul{
 	font-size: 16px;
 	background-color: black !important;
 }
-.logButtons{
-	margin-left: 1%;}
 
 .countryClass{
 	margin-bottom: 15px;
@@ -117,13 +129,30 @@ ul{
 	transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
 
-.glyphicon{
-	font-size: 22px;
-}
-.glyph a{
-color: black;
+.navbar-default .navbar-nav>li>a {
+	color: #337AB7;
 }
 
+.navbar-default .navbar-nav>.disabled>a{
+	color: gray;
+}
+
+.glyphicon{
+	font-size: 22px;
+	color: #337AB7;
+}
+.glyphCarousel{
+	font-size: 22px;
+	color: white;
+}
+.glyph a{
+	color: black;
+}
+#disclaimer{
+	text-align: center;
+	font-family: raleway;
+	font-size: 18px;
+}
 .paragraph{
 	text-align: justify;
 	font-family: raleway;
@@ -141,24 +170,28 @@ color: black;
 #list{
 	padding-top: 3%;
 }
+.navbar {
+	padding-top: 10px;
+	min-height: 80px; 
+}
 #carousel-example-generic2{
-	top: 22%;
-	right: 5%;
-	position: absolute;
 	width: 35%;
-	margin-bottom: 50px;
+	margin-top: 3%;
+}
 
+@media screen and (max-width: 760px){
+	#carousel-example-generic2{
+		display: none;
+	}
+	#link{
+		font-size:29px;
+	}
 }
 
 #carousel-example-generic{
-	top: 25%;
-	left: 35%;
-	position: absolute;
-	width: 35%;
-	margin-bottom: 50px;
-
+	width: 40%;
+	margin-left: 30%;
 }
-
 
 .carousel-control.left {
 
@@ -175,12 +208,16 @@ color: black;
 	position: relative;
 }
 #imageTest{
-	margin: 0 auto;
 	background-size: 100%;
 	overflow: hidden;
 }
 
-div.transparentBox
+#errorText{
+	text-align: center;
+	margin-top: 2%;
+}
+
+.transparentBox
 {
 	position: absolute;
 	top: calc(50% - 100px);
@@ -191,7 +228,7 @@ div.transparentBox
 	opacity:0.6;
 	border-radius: 8%;
 }
-div.transparentBox p
+.transparentBox p
 {
 	position: relative;
 	margin-top: 30px;

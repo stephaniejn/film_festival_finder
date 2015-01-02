@@ -23,14 +23,14 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     name:{
-    type: DataTypes.STRING,
-    validate: {
-      len:{
-        args: [1,100],
-        msg: "Please enter a name"
+      type: DataTypes.STRING,
+      validate: {
+        len:{
+          args: [1,100],
+          msg: "Please enter a name"
+        }
       }
     }
-  }
   }, {
     classMethods: {
       associate: function(models) {

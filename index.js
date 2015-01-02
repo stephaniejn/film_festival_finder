@@ -25,54 +25,6 @@ merged = merged.concat.apply(merged, arrays);
 var category = merged.filter(function(elem, pos){
 	return merged.indexOf(elem) == pos;
 });
-// var category=
-// [ "Feature", 
-// "Short", 
-// "Student", 
-// "Documentary", 
-// "Horror", 
-// "Narrative", 
-// "Music Video", 
-// "Animation", 
-// "Experimental", 
-// "Youth", 
-// "Comedy", 
-// "Live Action", 
-// "Family Films", 
-// "LGBT", 
-// "Sci-Fi", 
-// "Screenplay", 
-// "TV", 
-// "Action", 
-// "Fantasy", 
-// "Independent", 
-// "Religional", 
-// "Drama", 
-// "International", 
-// "Adventure", 
-// "Web Series", 
-// "Commercial", 
-// "Art House", 
-// "Trailer", 
-// "Teen Filmmaker", 
-// "Cell Shot", 
-// "Biopic", 
-// "Family", 
-// " Youth", 
-// "Music", 
-// " Narrative" 
-//  ]
-
-// var monthArray = [];
-// for(var i=0; i < date.length; i++) {
-// 	var dateArray = date[i].split("-");
-// 	var month = dateArray[1];
-// 	monthArray.push(month);
-// }
-// var uniqueMonths = monthArray.filter(function(elem, pos){
-// 	return monthArray.indexOf(elem) == pos;
-// });
-
 var monthNames = [ "January", "February", "March", "April", "May", "June",
 "July", "August", "September", "October", "November", "December" ];
 
@@ -99,7 +51,7 @@ app.use(function(req, res, next){
 	next();
 });
 
-// Alerts - set up for each page (need partial alerts ejs file)
+// Alerts 
 app.get('*', function(req,res,next){
 	var alerts = req.flash();
 	res.locals.alerts = alerts
@@ -124,7 +76,7 @@ app.post('/signup',function(req,res){
 			res.redirect('/login');
 		}else{
 			req.flash('danger', 'User already exists - please log in');
-            res.redirect('/login');
+			res.redirect('/login');
 		}
 		
             // res.send(createdUser)
@@ -162,7 +114,7 @@ app.post('/login',function(req,res){
             		res.redirect('/search');
             	}
             	else{
-            		req.flash('danger', 'Invalid password - failed!');
+            		req.flash('danger', 'Invalid email or password - please try again');
             		res.redirect('/login');
             	}
             })
@@ -177,17 +129,17 @@ app.post('/login',function(req,res){
 // Home Page
 app.get('/search', function(req,res){
 	var user = req.getUser();
-			res.render('search', {uniqueCountries:uniqueCountries, category:category,
-			 monthNames:monthNames, user:user});
+	res.render('search', {uniqueCountries:uniqueCountries, category:category,
+		monthNames:monthNames, user:user});
 })
 
 // About Page
 app.get('/about', function(req,res){
 	Instagram.users.recent({ user_id: 3724687, 
 		complete: function(data){
-	res.render("about",{data:data})
-}
-})
+			res.render("about",{data:data})
+		}
+	})
 });
 
 // Landing Page
@@ -209,7 +161,7 @@ app.get('/festivals', function(req,res){
 	}
 	if(req.query.fee){
 		festivals=festivals.filter(function(item){
-				return (item.fee == req.query.fee);
+			return (item.fee == req.query.fee);
 		})
 	}
 	if(req.query.country){
@@ -272,15 +224,15 @@ app.get('/id/:festivalName', function(req,res){
 // Go to Favorites page
 app.get("/favoriteList", function(req,res){
 	if(req.getUser()){
-	var user=req.getUser(); 
-	var data= db.favorite.findAll({where: {userId:user.id},order: 'id ASC'}).then(function(data){ 
-		res.render('favoriteList', {"festivals": data});
-	})
-}
-else{
-	req.flash('danger', 'Please log in to view your favorites page');
-        res.redirect('/login');
-}
+		var user=req.getUser(); 
+		var data= db.favorite.findAll({where: {userId:user.id},order: 'id ASC'}).then(function(data){ 
+			res.render('favoriteList', {"festivals": data});
+		})
+	}
+	else{
+		req.flash('danger', 'Please log in to view your favorites page');
+		res.redirect('/login');
+	}
 });
 
 // Delete Favorite 
@@ -306,31 +258,31 @@ app.post('/favoriteList', function(req,res){
 // Comments Page
 app.get("/favoriteList:id/comments",function(req,res){
 	if(req.getUser()){
-var commentID = req.params.id
-db.favorite.find({where: {id: req.params.id}}).then(function(watchThing){
+		var commentID = req.params.id
+		db.favorite.find({where: {id: req.params.id}}).then(function(watchThing){
   // res.send(watchThing)
   db.comment.findAll({where:{favoriteId:commentID}}).then(function(returnMe){
   // res.send({returnMe:returnMe})
-res.render("comments", {commentID:commentID, returnMe:returnMe, watchThing:watchThing});
+  res.render("comments", {commentID:commentID, returnMe:returnMe, watchThing:watchThing});
 })
 })
-}
+	}
 
-else{
-	req.flash('danger', 'Please log in to view comments');
-        res.redirect('/login');
-}
+	else{
+		req.flash('danger', 'Please log in to view comments');
+		res.redirect('/login');
+	}
 
 })
 
 // Display comments
 app.post("/favoriteList:id/comments",function(req,res){
-  db.favorite.find({where: {id: req.params.id}}).then(function(newComment){
-  newComment.createComment({text: req.body.text, watch_id:req.params.id})
-  .then(function(theComment){
-    res.redirect("comments")
-  })
-})
+	db.favorite.find({where: {id: req.params.id}}).then(function(newComment){
+		newComment.createComment({text: req.body.text, watch_id:req.params.id})
+		.then(function(theComment){
+			res.redirect("comments")
+		})
+	})
 })
 
 //logout
@@ -339,6 +291,11 @@ app.get('/logout',function(req,res){
 	delete req.session.user;
 	req.flash('info', 'You have been logged out.');
 	res.redirect('/search');
+});
+
+// Error Page
+app.use(function(req,res){
+	res.render('error');
 });
 
 app.listen(process.env.PORT || 3000)

@@ -10,32 +10,32 @@
 
     <div class="form-group">
 
-  <!-- chosen -->
-  <form role="form" method="get" action="/festivals">
-   Fee <select class="form-control feeClass" name="fee">
+      <!-- chosen -->
+      <form role="form" method="get" action="/festivals">
+       Fee <select class="form-control feeClass" name="fee">
+       <option value=""></option>
+       <option value="yes">Fee</option>
+       <option value="no">No Fee</option>
+     </select>
+
+     <div id="categoryTitle"> Category </div> 
+     <select multiple class="chzn-select form-control" id="category" name="category">
       <option value=""></option>
-      <option value="yes">Fee</option>
-      <option value="no">No Fee</option>
+      <%for (var i =0; i<category.length; i++){%>
+      <option value="<%=category[i]%>"><%=category[i]%></option>
+      <%}%>
     </select>
 
-    <div id="categoryTitle"> Category </div> 
-    <select multiple class="chzn-select form-control" id="category" name="category">
-      <option value=""></option>
-     <%for (var i =0; i<category.length; i++){%>
-     <option value="<%=category[i]%>"><%=category[i]%></option>
-     <%}%>
-   </select>
+    Country <select class="form-control countryClass" name="country">
+    <option value=""></option>
+    <%for (var i =0; i<uniqueCountries.length; i++){%>
+    <option value="<%=uniqueCountries[i]%>"><%=uniqueCountries[i]%></option>
+    <%}%>
+  </select>  
 
-   Country <select class="form-control countryClass" name="country">
-     <option value=""></option>
-   <%for (var i =0; i<uniqueCountries.length; i++){%>
-     <option value="<%=uniqueCountries[i]%>"><%=uniqueCountries[i]%></option>
-     <%}%>
-   </select>  
-
-   <p>Search Date Start: <input type="text" name = "startDate" id="datepicker"></p>
-<p>Search Date End: <input type="text" name = "endDate" id="datepicker2"></p>
-   <input type="submit" class="btn btn-default" value="Submit">
+  <p>Search Date Start: <input type="text" name = "startDate" id="datepicker"></p>
+  <p>Search Date End: <input type="text" name = "endDate" id="datepicker2"></p>
+  <input type="submit" class="btn btn-default" value="Submit">
 </form>
 
 <!-- change type to date to get html datepicker -->
