@@ -12,34 +12,28 @@
   </div>
 </div>
 
-
 <div class = "container">
   <div class="row">
     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-      <%for(var i =1; i<data.length; i++){%>
-      <%if(data[i] != undefined){%>
-      <!-- Wrapper for slides -->
+      <%for(var i =1; i<instagramData.length; i++){%>
+      <%if(instagramData[i] != undefined){%>
       <div class="carousel-inner" role="listbox">
         <div class="item active">
-         <img class= "img-responsive center-block" id="imageTest" src= "<%= data[0].images.standard_resolution.url%>">
+         <img class= "img-responsive center-block" id="imageTest" src= "<%= instagramData[0].images.standard_resolution.url%>">
          <div class="carousel-caption">
-          
          </div>
        </div>
-       <%for(var i =1; i<data.length; i++){%>
+       <%for(var i =1; i<instagramData.length; i++){%>
        <div class="item">
-        <img class= "img-responsive center-block" id="imageTest" src= "<%= data[i].images.standard_resolution.url%>">
+        <img class= "img-responsive center-block" id="imageTest" src= "<%= instagramData[i].images.standard_resolution.url%>">
         <div class="carousel-caption">
           
         </div>
       </div>
       <%}%>
       <%}%>
-      
     </div>
 
-
-    <!-- Controls -->
     <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
       <span class="glyphCarousel glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
@@ -61,6 +55,5 @@
     </div>
   </div>
 </div>
-
 
 <% include footer %>

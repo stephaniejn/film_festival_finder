@@ -1,28 +1,23 @@
 <html>
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-	<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
-	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
-	<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-	<script src="/script.js"></script>
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-  <link href='//fonts.googleapis.com/css?family=Raleway:400,500,300' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" type="text/css" href="/style.css">
-  <!-- CHOSEN CSS -->
-  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/chosen/1.1.0/chosen.min.css">
-  <!-- CHOSEN JS -->
-  <script type="text/javascript" src="/chosen.jquery.min.js"></script>
-  </html>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+ <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+ <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+ <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+ <script src="/script.js"></script>
+ <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+ <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+ <link href='//fonts.googleapis.com/css?family=Raleway:400,500,300' rel='stylesheet' type='text/css'>
+ <link rel="stylesheet" type="text/css" href="/style.css">
+ <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/chosen/1.1.0/chosen.min.css">
+ <script type="text/javascript" src="/chosen.jquery.min.js"></script>
 </head>
 <body>
-
 
   <div class="page-header">
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
             <span class="sr-only">Toggle navigation</span>
@@ -33,13 +28,11 @@
           <h3 style="color:black" class="navbar-text navbar-left">Film Festival Finder <small>for Filmmakers</small></h3>
         </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <form class="navbar-form navbar-right" role="search">
             <%if (currentUser) {%>
             <a class="btn btn-default" href="/logout" role="button">Logout</a>
             <%} else {%>
-
             <a class="btn btn-default" href="/login" role="button">Login</a>
             <a class="btn btn-default" href="/signup" role="button">Signup</a>
             <%}%>
@@ -54,16 +47,12 @@
            <li class="disabled"><a href="/favoriteList">Favorites</a></li>
            <%}%>
          </ul>
-         
-         
-       </div><!-- /.navbar-collapse -->
-     </div><!-- /.container-fluid -->
+       </div>
+     </div>
    </nav>
  </div>
  <br>
 
- 
  <div class="container-fluid">
-  
 
   <% include alerts %>

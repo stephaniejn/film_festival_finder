@@ -94,7 +94,6 @@ ul{
 	color: black;
 	border-color: #B9B3AF
 }
-
 .page-header{
 	font-family: courier;
 	font-size: 16px;
@@ -107,7 +106,6 @@ ul{
 .feeClass{
 	margin-bottom: 15px 
 }
-
 .chosen-container-multi .chosen-choices, #datepicker, #datepicker2{
 	margin-bottom: 15px !important;
 	min-height: 34px !important;
@@ -128,15 +126,12 @@ ul{
 	-o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 	transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
-
 .navbar-default .navbar-nav>li>a {
 	color: #337AB7;
 }
-
 .navbar-default .navbar-nav>.disabled>a{
 	color: gray;
 }
-
 .glyphicon{
 	font-size: 22px;
 	color: #337AB7;
@@ -178,7 +173,6 @@ ul{
 	width: 35%;
 	margin-top: 3%;
 }
-
 @media screen and (max-width: 760px){
 	#carousel-example-generic2{
 		display: none;
@@ -187,23 +181,16 @@ ul{
 		font-size:29px;
 	}
 }
-
 #carousel-example-generic{
 	width: 40%;
 	margin-left: 30%;
 }
-
 .carousel-control.left {
-
 	background-image: none;
 }
-
 .carousel-control.right {
-
 	background-image: none;
 }
-
-
 .carousel-inner{
 	position: relative;
 }
@@ -211,12 +198,10 @@ ul{
 	background-size: 100%;
 	overflow: hidden;
 }
-
 #errorText{
 	text-align: center;
 	margin-top: 2%;
 }
-
 .transparentBox
 {
 	position: absolute;
@@ -238,7 +223,6 @@ ul{
 	font-weight: bold;
 	color: #DBC497;
 }
-
 .span8 a {
 	color: #1F0D12;
 	text-decoration: none;

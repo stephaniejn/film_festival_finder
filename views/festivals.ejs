@@ -9,23 +9,23 @@
 						<li class="list-group-item">
 							<div> <img class="logo" src="http://www.thetakes.com/festivals/<%= festivals[i].logoUrl %>"> 
 								<form class = "moreInfoBtn" action = '/id/<%= festivals[i].name %>' method = 'get'>
-									<button type="submit" class="btn btn-default moreBtn">Find Out More</button></form>
+									<button type="submit" class="btn btn-default moreBtn">Find Out More</button>
+								</form>
 								</div>
+							<%var date= new Date(festivals[i].lastDeadline).toString().split(" ")%>
 
-								<%var date= new Date(festivals[i].lastDeadline).toString().split(" ")%>
-
-								<div class="name"> <%= festivals[i].name%></div> Fee: <%=festivals[i].fee%>, Country: <%=festivals[i].country%>, Category: <%=festivals[i].category%>, 
-								Date: <%= date[1]+" "+date[2]+" "+date[3] %>
-							</li> 
-						</div>
-						<%}%>
-						<br>
-					</ul>
+							<div class="name"> <%= festivals[i].name%></div> Fee: <%=festivals[i].fee%>, Country: <%=festivals[i].country%>, Category: <%=festivals[i].category%>, 
+							Date: <%= date[1]+" "+date[2]+" "+date[3] %>
+						</li> 
+					</div>
+					<%}%>
+					<br>
 				</ul>
-				<%if(festivals.length === 0){%>
-				<h4> No results found. Please broaden your search terms. </h4>
-				<%}%>
-			</div>
+			</ul>
+			<%if(festivals.length === 0){%>
+			<h4> No results found. Please broaden your search terms. </h4>
+			<%}%>
 		</div>
 	</div>
-	<% include footer %>
+</div>
+<% include footer %>
