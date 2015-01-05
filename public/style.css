@@ -184,6 +184,7 @@ ul{
 	}
 	#options{
 		width: 150%;
+		margin-left: -35%;
 	}
 	#link{
 		font-size:29px;
