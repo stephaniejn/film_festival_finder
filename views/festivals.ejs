@@ -14,7 +14,7 @@
 								</div>
 							<%var date= new Date(festivals[i].lastDeadline).toString().split(" ")%>
 
-							<div class="name"> <%= festivals[i].name%></div> 
+							<p><div class="name"> <%= festivals[i].name%></div> </p>
 							<p><strong> Fee: </strong> <%=festivals[i].fee%> </p>
 							<p><strong> Country: </strong> <%=festivals[i].country%> </p>
 							<p><strong> Category: </strong> <%=festivals[i].category.toString().split(",").join(", ")%> </p>
