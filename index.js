@@ -1,3 +1,4 @@
+
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
@@ -13,7 +14,7 @@ var countries = festivalData.festivals.map(function(item){
 }).sort();
 var uniqueCountries = countries.filter(function(elem, pos) {
 	return countries.indexOf(elem) == pos;
-}); 
+});
 var date = festivalData.festivals.map(function(item){
 	return(item.lastDeadline)
 });
@@ -75,44 +76,44 @@ app.post('/signup',function(req,res){
 			req.flash('danger', 'User already exists - please log in');
 			res.redirect('/login');
 		}
-        }).catch(function(error){
-        	if(error && Array.isArray(error.errors)){
-            error.errors.forEach(function(errorItem){
-            	req.flash('danger', errorItem.message);
-            })
-        }else{
-        	res.flash('danger','unknown error');
-        }
-        res.redirect('/signup');
-    })
-    });
+  }).catch(function(error){
+   if(error && Array.isArray(error.errors)){
+    error.errors.forEach(function(errorItem){
+     req.flash('danger', errorItem.message);
+   })
+  }else{
+   res.flash('danger','unknown error');
+ }
+ res.redirect('/signup');
+})
+});
 
 app.get('/login',function(req,res){
 	res.render('login');
 });
 
 app.post('/login',function(req,res){
-    db.user.find({where:{email: req.body.email}}).then(function(userObj){
-    	if(userObj){
-            bcrypt.compare(req.body.password, userObj.password, function(err, match){
-            	if(match === true){
-            		req.session.user = {
-            			id: userObj.id,
-            			email: userObj.email,
-            			name: userObj.name
-            		};
-            		res.redirect('/search');
-            	}
-            	else{
-            		req.flash('danger', 'Invalid email or password - please try again');
-            		res.redirect('/login');
-            	}
-            })
-        }else{
-        	req.flash('danger', 'Unknown user...');
-        	res.redirect('/login');
-        }
-    })
+  db.user.find({where:{email: req.body.email}}).then(function(userObj){
+   if(userObj){
+    bcrypt.compare(req.body.password, userObj.password, function(err, match){
+     if(match === true){
+      req.session.user = {
+       id: userObj.id,
+       email: userObj.email,
+       name: userObj.name
+     };
+     res.redirect('/search');
+   }
+   else{
+    req.flash('danger', 'Invalid email or password - please try again');
+    res.redirect('/login');
+  }
+})
+  }else{
+   req.flash('danger', 'Unknown user...');
+   res.redirect('/login');
+ }
+})
 });
 
 app.get('/search', function(req,res){
@@ -122,7 +123,7 @@ app.get('/search', function(req,res){
 })
 
 app.get('/about', function(req,res){
-	Instagram.users.recent({ user_id: 3724687, 
+	Instagram.users.recent({ user_id: 3724687,
 		complete: function(instagramData){
 			res.render("about",{instagramData:instagramData})
 		}
@@ -151,7 +152,7 @@ app.get('/festivals', function(req,res){
 	if(req.query.country){
 		festivals=festivals.filter(function(item){
 			return (item.country == req.query.country);
-		})	
+		})
 	}
 	if(req.query.category){
 		if(!Array.isArray(req.query.category)) req.query.category = [req.query.category];
@@ -185,7 +186,7 @@ app.get('/id/:festivalName', function(req,res){
 				var realName = oneFestival.name.split(",")
 				realName = realName[0].split(" ").join("")
 				console.log(realName)
-				Instagram.tags.recent({ name: realName, 
+				Instagram.tags.recent({ name: realName,
 					complete: function(festivalData){
 						res.render("id", {festivalFound:wasFound, festivals:festivals, name:name, oneFestival:oneFestival, festivalData:festivalData})
 					}
@@ -198,8 +199,8 @@ app.get('/id/:festivalName', function(req,res){
 
 app.get("/favoriteList", function(req,res){
 	if(req.getUser()){
-		var user=req.getUser(); 
-		var data= db.favorite.findAll({where: {userId:user.id},order: 'id ASC'}).then(function(festivalData){ 
+		var user=req.getUser();
+		var data= db.favorite.findAll({where: {userId:user.id},order: 'id ASC'}).then(function(festivalData){
 			res.render('favoriteList', {"festivals": festivalData});
 		})
 	}
@@ -208,7 +209,7 @@ app.get("/favoriteList", function(req,res){
 		res.redirect('/login');
 	}
 });
- 
+
 app.delete("/favoriteList/:id", function(req,res){
 	db.favorite.destroy({where: {id: req.params.id}})
 	.then(function(deleteCount){
@@ -231,10 +232,10 @@ app.get("/favoriteList:id/comments",function(req,res){
 	if(req.getUser()){
 		var commentID = req.params.id
 		db.favorite.find({where: {id: req.params.id}}).then(function(festivalName){
-  db.comment.findAll({where:{favoriteId:commentID}}).then(function(festivalData){
-  res.render("comments", {commentID:commentID, festivalData:festivalData, festivalName:festivalName});
-})
-})
+      db.comment.findAll({where:{favoriteId:commentID}}).then(function(festivalData){
+        res.render("comments", {commentID:commentID, festivalData:festivalData, festivalName:festivalName});
+      })
+    })
 	}
 
 	else{
